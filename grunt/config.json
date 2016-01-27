@@ -1,0 +1,25 @@
+{
+	"store": {
+		"config":{
+			"themeName" : "store",
+			"sassPath" : "../sass/store",
+			"scriptPath" : "../js_source"
+		},
+		"interface": {
+			"admin": {
+				"config": {
+				},
+				"css": "../content/css/admin",
+				"js": "../content/js/admin"
+			},
+			"public": {
+				"config": {
+				},
+				"css": "../content/css/admin",
+				"js": "../content/js/admin"
+			}
+		},
+		"css": "../content/css",
+		"js": "../content/js"
+	}
+}

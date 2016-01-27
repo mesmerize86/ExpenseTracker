@@ -1,0 +1,25 @@
+/* ==============================================
+*	Mixins
+*
+* ==============================================
+*/
+
+/* @override bootstrap button variant */
+@mixin button-variant($color, $background, $border){
+	color: $color;
+	background-color: $background;
+	border-color: $border;
+
+	&:hover {
+		color: $color;
+		background-color: darken($background, 10%);
+		border-color: darken($border, 12%);
+	}
+}
+
+
+/* import bootstrap mixins */
+@import '../library/bootstrap/mixins/_buttons.scss';
+@import '../library/bootstrap/mixins/_vendor-prefixes.scss';
+@import '../library/bootstrap/mixins/_tab-focus.scss';
+@import '../library/bootstrap/mixins/_opacity.scss';
