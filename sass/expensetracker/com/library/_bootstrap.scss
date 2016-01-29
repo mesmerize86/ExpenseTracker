@@ -1,0 +1,23 @@
+// =================================
+// Bootstsrap
+// =================================
+
+//Cora Vaiables
+@import '../../store/library/bootstrap/_variables.scss';
+
+// Core CSS
+@import '../../store/library/bootstrap/_buttons.scss';
+@import '../../store/library/bootstrap/_grid.scss';
+@import '../../store/library/bootstrap/_type.scss';
+
+//Cora Mixins
+@import '../../store/library/bootstrap/mixins/_buttons.scss';
+@import '../../store/library/bootstrap/mixins/_background-variant.scss';
+@import '../../store/library/bootstrap/mixins/_clearfix.scss';
+@import '../../store/library/bootstrap/mixins/_grid-framework.scss';
+@import '../../store/library/bootstrap/mixins/_grid.scss';
+@import '../../store/library/bootstrap/mixins/_opacity.scss';
+@import '../../store/library/bootstrap/mixins/_tab-focus.scss';
+@import '../../store/library/bootstrap/mixins/_text-emphasis.scss';
+@import '../../store/library/bootstrap/mixins/_text-overflow.scss';
+@import '../../store/library/bootstrap/mixins/_vendor-prefixes.scss';
