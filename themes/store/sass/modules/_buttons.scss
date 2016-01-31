@@ -1,0 +1,85 @@
+/* ==============================================
+*	Buttons
+*
+* ==============================================
+*/
+@import '../libraries/bootstrap/buttons'; //To extend btn
+
+/* @override Bootstrap btn */
+.button { 
+  @extend .btn;
+}
+
+a.button {
+  @extend a.btn;
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.button-primary {
+  @include button-variant($button-primary-color, $button-primary-bg, $button-primary-border);
+}
+// Success appears as green
+.button-success {
+  @include button-variant($button-success-color, $button-success-bg, $button-success-border);
+}
+// Info appears as blue-green
+.button-info {
+  @include button-variant($button-info-color, $button-info-bg, $button-info-border);
+}
+// Warning appears as orange
+.button-warning {
+  @include button-variant($button-warning-color, $button-warning-bg, $button-warning-border);
+}
+// Danger and error appear as red
+.button-danger {
+  @include button-variant($button-danger-color, $button-danger-bg, $button-danger-border);
+}
+
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.button-link {
+  @extend .btn-link;
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.button-lg {
+  @extend .btn-lg;
+}
+.button-sm {
+  // line-height: ensure proper height of button next to small input
+  @extend .btn-sm;
+}
+.button-xs {
+  @extend .btn-xs;
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.button-block {
+  @extend .btn-block;
+}
+
+// Vertically space out multiple block buttons
+.button-block + .button-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.button-block {
+    @extend .btn-block;
+  }
+}

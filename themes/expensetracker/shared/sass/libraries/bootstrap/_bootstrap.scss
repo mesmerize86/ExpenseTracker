@@ -1,0 +1,23 @@
+// =================================
+// Bootstsrap
+// =================================
+
+//Cora Vaiables
+@import '../../../../../store/sass/libraries/bootstrap/variables';
+
+//Cora Mixins
+@import '../../../../../store/sass/libraries/bootstrap/mixins/buttons';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/background-variant';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/clearfix';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/grid-framework';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/grid';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/opacity';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/tab-focus';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/text-emphasis';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/text-overflow';
+@import '../../../../../store/sass/libraries/bootstrap/mixins/vendor-prefixes';
+
+// Core CSS
+@import '../../../../../store/sass/libraries/bootstrap/grid';
+@import '../../../../../store/sass/libraries/bootstrap/type';
+

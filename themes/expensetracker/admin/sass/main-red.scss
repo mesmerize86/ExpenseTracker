@@ -1,0 +1,21 @@
+// =================================
+// Admin Main Styles
+// =================================
+
+/* Themes */
+@import 'themes/red';
+
+/* BASE - Base Styles, variables, mixins, etc */
+@import 'base/base';
+
+/* Bootstrap */
+@import 'libraries/bootstrap/bootstrap';
+
+/* Utilities  - mixins, functions, etc */
+
+/* Layout - Page layout styles */
+@import 'layouts/layouts';
+
+/* Modules - Individual Site Components */
+@import 'modules/modules';
+
