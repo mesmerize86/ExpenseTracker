@@ -1,12 +1,32 @@
-var expenseTrackerConfig = function(themeName, site, module, grunt){
+var expenseTrackerConfig = function(themeSiteConfig, grunt){
 
 	var config = {
 		watch: configureWatch,
-		 sass: configureSass
+		sass: configureSass
+	};
+
+	var themeConfig = themeSiteConfig.themeName;
+	var tempSite = {
+		admin : themeSiteConfig.site,
+		public: themeSiteConfig.site
+	};
+
+	if(themeSiteConfig.site === undefined){
+			tempSite.admin = "admin";
+			tempSite.public = "public";
 	}
 
-	var themeConfig = themeName;
-	var defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][site].config || {});
+	// if(themeSiteConfig.site === undefined){
+	// 	for(var site in themeConfig["interface"]){
+	// 		defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][site].config || {});
+	// 		console.log(defaultConfig);
+	// 	}
+	// }
+	// else{
+	// 	defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][themeSiteConfig.site].config || {});
+	// 	console.log(defaultConfig);
+	// }
+
 
 	function configureWatch(){
 		var watchConfig = {};
@@ -18,11 +38,13 @@ var expenseTrackerConfig = function(themeName, site, module, grunt){
 			}
 		};
 
-		if(module == "css" || module == "all"){
+		for(var site in tempSite){
+			defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][tempSite[site]].config || {});
+		
 			watchConfig.css = {
 				files: [defaultConfig.sassPath + '/**/*.{sass,scss}'],
 				tasks: ['sass']
-			}
+			};
 		}
 
 		return watchConfig;
@@ -30,21 +52,28 @@ var expenseTrackerConfig = function(themeName, site, module, grunt){
 
 	function configureSass(){
 		var sassConfig = {};
+		
+		var destPath, site;
 
-		sassConfig[defaultConfig.themeName + "_" + site + "-css"] = {
-			options:{
-				style: 'compressed',
-				"sourcemap=none": ''
-			},
-			files: [
-				{
-					expand: true,
-					cwd: defaultConfig.sassPath,
-					src: ['*.{sass,scss}'],
-					dest: themeConfig["interface"][site].css,
-					ext: '.css'
-				}
-			],
+		for(site in tempSite){
+			defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][tempSite[site]].config || {});
+			destPath = themeConfig["interface"][tempSite[site]];
+
+			sassConfig[defaultConfig.themeName + "_" + site + "-css"] = {
+				options:{
+					style: 'compressed',
+					"sourcema/p=none": ''
+				},
+				files: [
+					{
+						expand: true,
+						cwd: defaultConfig.sassPath,
+						src: ['*.{sass,scss}'],
+						dest: destPath.css,
+						ext: '.css'
+					}
+				],
+			};
 		}
 		return sassConfig;
 	}

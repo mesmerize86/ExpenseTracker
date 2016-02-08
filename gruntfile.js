@@ -29,48 +29,48 @@ module.exports = function(grunt){
 
 	grunt.registerTask('debug', 'Watch css and script task [debug]', registerWatchTask);
 
+	var themeSiteConfig = {
+			themeName : '',
+			site : '',
+			module : ''
+		};
+
 	function registerWatchTask(themeName, site, module){
 
-		if(themeName === 'store'){
-			grunt.log.error('Store can not be compile. Please choose different theme name.');
-			return;
-		}
-
+		themeSiteConfig.themeName = themeName;
+		themeSiteConfig.site = site;
+		themeSiteConfig.module = module;
+		
 		var isDebugMode = true;
 
-		var themeName = configJson[themeName];
-		var expenseTrackerConfig = require('./expenseTrackerConfig.js')(themeName, site, module, grunt);
+		themeSiteConfig.themeName = configJson[themeSiteConfig.themeName];
+		var expenseTrackerConfig = require('./expenseTrackerConfig.js')(themeSiteConfig, grunt);
 
+		
+		register(isDebugMode, themeSiteConfig, expenseTrackerConfig);
+		//run(isDebugMode, themeSiteConfig);
 
-		register(isDebugMode, module, expenseTrackerConfig);
-		run(isDebugMode, module);
+		grunt.task.run('watch');
 
 	}
 
-	function register(isDebugMode, module, expenseTrackerConfig){
+	function register(isDebugMode,themeSiteConfig, expenseTrackerConfig){
 		var gruntConfig = {};
 
-		if(module == 'css' || module =='all'){
+		if(themeSiteConfig.site === undefined || themeSiteConfig.module === undefined || themeSiteConfig.module == 'css'){
 			gruntConfig.sass = expenseTrackerConfig.sass();
 		}
-
-		// if(module == 'js' || module == 'all'){
-		// }
 
 		gruntConfig.watch = expenseTrackerConfig.watch();
 		grunt.config.merge(gruntConfig);
 	}
 
-	function run(isDebugMode, module){
+	function run(isDebugMode, themeSiteConfig){
 
-		if(module == 'css' || module =='all'){
+		if(themeSiteConfig.site === undefined || themeSiteConfig.module === undefined || themeSiteConfig.module == 'css'){
 			grunt.task.run(['sass']);
 		}
 
-		// if(module == 'js' || module == 'all'){
-
-		// }
-
-		grunt.task.run(['connect', 'watch' + (module == 'all' ? '' : ':' + module )]);
+		grunt.task.run(['connect', 'watch' + (themeSiteConfig.site  === undefined ? '' : ':' + themeSiteConfig.site )]);
 	}
 };

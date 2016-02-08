@@ -24,13 +24,13 @@
 	},
 	"expensetracker": {
 		"config":{
-			"themeName" : "ExpenseTracker",
-			"sassPath" : "themes/expensetracker/shared/sass"
+			"themeName" : "ExpenseTracker"
 		},
 		"interface": {
 			"admin": {
 				"config": {
-					"sassPath" : "themes/expensetracker/admin/sass"
+					"sassPath" : "themes/expensetracker/admin/sass",
+					"scriptPath" : "themes/store/js_source"
 				},
 				"css": "content/css/admin",
 				"js": "content/js/admin"
