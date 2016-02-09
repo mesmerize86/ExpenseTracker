@@ -29,26 +29,22 @@ module.exports = function(grunt){
 
 	grunt.registerTask('debug', 'Watch css and script task [debug]', registerWatchTask);
 
-	var themeSiteConfig = {
-			themeName : '',
-			site : '',
-			module : ''
-		};
+	var themeSiteConfig = {};
 
 	function registerWatchTask(themeName, site, module){
 
 		themeSiteConfig.themeName = themeName;
 		themeSiteConfig.site = site;
 		themeSiteConfig.module = module;
-		
-		var isDebugMode = true;
+		themeSiteConfig.hasSite = site !== undefined;
+		themeSiteConfig.hasModule = module !== undefined;
+		themeSiteConfig.themeConfigName = configJson[themeName];
 
-		themeSiteConfig.themeName = configJson[themeSiteConfig.themeName];
+		var isDebugMode = true;
 		var expenseTrackerConfig = require('./expenseTrackerConfig.js')(themeSiteConfig, grunt);
 
-		
+		//console.log(expenseTrackerConfig.sass());
 		register(isDebugMode, themeSiteConfig, expenseTrackerConfig);
-		//run(isDebugMode, themeSiteConfig);
 
 		grunt.task.run('watch');
 
@@ -57,7 +53,7 @@ module.exports = function(grunt){
 	function register(isDebugMode,themeSiteConfig, expenseTrackerConfig){
 		var gruntConfig = {};
 
-		if(themeSiteConfig.site === undefined || themeSiteConfig.module === undefined || themeSiteConfig.module == 'css'){
+		if(!themeSiteConfig.hasModule || themeSiteConfig.module == 'css'){
 			gruntConfig.sass = expenseTrackerConfig.sass();
 		}
 

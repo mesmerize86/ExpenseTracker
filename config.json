@@ -24,7 +24,8 @@
 	},
 	"expensetracker": {
 		"config":{
-			"themeName" : "ExpenseTracker"
+			"themeName" : "ExpenseTracker",
+			"sassPath" : "themes/expensetracker"
 		},
 		"interface": {
 			"admin": {

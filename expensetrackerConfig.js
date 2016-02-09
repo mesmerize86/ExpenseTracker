@@ -5,28 +5,17 @@ var expenseTrackerConfig = function(themeSiteConfig, grunt){
 		sass: configureSass
 	};
 
-	var themeConfig = themeSiteConfig.themeName;
-	var tempSite = {
-		admin : themeSiteConfig.site,
-		public: themeSiteConfig.site
-	};
+	var themeConfig = themeSiteConfig.themeConfigName;
 
-	if(themeSiteConfig.site === undefined){
-			tempSite.admin = "admin";
-			tempSite.public = "public";
+	var sites = [];
+
+	for(site in themeConfig.interface){
+		sites.push(site);
 	}
-
-	// if(themeSiteConfig.site === undefined){
-	// 	for(var site in themeConfig["interface"]){
-	// 		defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][site].config || {});
-	// 		console.log(defaultConfig);
-	// 	}
-	// }
-	// else{
-	// 	defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][themeSiteConfig.site].config || {});
-	// 	console.log(defaultConfig);
-	// }
-
+	
+	var activeSites = sites.filter(function(site){
+		return !themeSiteConfig.hasSite || site == themeSiteConfig.site;
+	});
 
 	function configureWatch(){
 		var watchConfig = {};
@@ -38,14 +27,16 @@ var expenseTrackerConfig = function(themeSiteConfig, grunt){
 			}
 		};
 
-		for(var site in tempSite){
-			defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][tempSite[site]].config || {});
-		
-			watchConfig.css = {
-				files: [defaultConfig.sassPath + '/**/*.{sass,scss}'],
-				tasks: ['sass']
-			};
+		var defaultConfig = themeConfig.config;
+
+		if(themeSiteConfig.hasSite){
+			defaultConfig = extendOptions({}, themeConfig.config, themeConfig.interface[themeSiteConfig.site].config || {});
 		}
+
+		watchConfig.css = {
+			files: [defaultConfig.sassPath + '/**/*.{sass,scss}'],
+			tasks: ['sass']
+		};
 
 		return watchConfig;
 	}
@@ -55,14 +46,13 @@ var expenseTrackerConfig = function(themeSiteConfig, grunt){
 		
 		var destPath, site;
 
-		for(site in tempSite){
-			defaultConfig = extendOptions({}, themeConfig.config, themeConfig["interface"][tempSite[site]].config || {});
-			destPath = themeConfig["interface"][tempSite[site]];
+		activeSites.forEach(function(site){
+			var defaultConfig = extendOptions({}, themeConfig.config, themeConfig.interface[site].config || {});
+			destPath = themeConfig.interface[site];
 
 			sassConfig[defaultConfig.themeName + "_" + site + "-css"] = {
 				options:{
 					style: 'compressed',
-					"sourcema/p=none": ''
 				},
 				files: [
 					{
@@ -74,7 +64,7 @@ var expenseTrackerConfig = function(themeSiteConfig, grunt){
 					}
 				],
 			};
-		}
+		});
 		return sassConfig;
 	}
 
