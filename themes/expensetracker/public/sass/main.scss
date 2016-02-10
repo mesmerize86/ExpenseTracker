@@ -2,20 +2,23 @@
 // Public Main Styles
 // =================================
 
+/* Bootstrap */
+@import 'libraries/bootstrap/bootstrap';
+
 /* Themes */
 @import 'themes/default';
+
+/* Utilities  - mixins, functions, etc */
+@import 'utilities/mixins';
 
 /* BASE - Base Styles, variables, mixins, etc */
 @import 'base/base';
 
-/* Bootstrap */
-@import 'libraries/bootstrap/bootstrap';
-
-/* Utilities  - mixins, functions, etc */
 
 /* Layout - Page layout styles */
 @import 'layouts/layouts';
 
 /* Modules - Individual Site Components */
 @import 'modules/modules';
+
 

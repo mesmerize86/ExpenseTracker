@@ -50,9 +50,11 @@ var expenseTrackerConfig = function(themeSiteConfig, grunt){
 			var defaultConfig = extendOptions({}, themeConfig.config, themeConfig.interface[site].config || {});
 			destPath = themeConfig.interface[site];
 
+			console.log(destPath.css);
+
 			sassConfig[defaultConfig.themeName + "_" + site + "-css"] = {
 				options:{
-					style: 'compressed',
+					style: 'compressed'
 				},
 				files: [
 					{

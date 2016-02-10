@@ -33,18 +33,18 @@
 					"sassPath" : "themes/expensetracker/admin/sass",
 					"scriptPath" : "themes/store/js_source"
 				},
-				"css": "content/css/admin",
-				"js": "content/js/admin"
+				"css": "content/expensetracker/css/admin",
+				"js": "content/expensetracker/js/admin"
 			},
 			"public": {
 				"config": {
 					"sassPath" : "themes/expensetracker/public/sass"
 				},
-				"css": "content/css/public",
-				"js": "content/js/public"
+				"css": "content/expensetracker/css/public",
+				"js": "content/expensetracker/js/public"
 			}
 		},
-		"css": "content/css",
-		"js": "content/js"
+		"css": "content/expensetracker/css",
+		"js": "content/expensetracker/js"
 	}
 }

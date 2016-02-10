@@ -1,0 +1,8 @@
+@mixin add-background($color){
+	@if($color == $default-background){
+		background-color: $color;
+		color: #FFFFFF;
+	}@else {
+		color: #cccccc;
+	}
+}

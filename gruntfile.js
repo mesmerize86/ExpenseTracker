@@ -43,10 +43,10 @@ module.exports = function(grunt){
 		var isDebugMode = true;
 		var expenseTrackerConfig = require('./expenseTrackerConfig.js')(themeSiteConfig, grunt);
 
-		//console.log(expenseTrackerConfig.sass());
+		// console.log(expenseTrackerConfig.sass());
 		register(isDebugMode, themeSiteConfig, expenseTrackerConfig);
 
-		grunt.task.run('watch');
+		grunt.task.run('connect','watch');
 
 	}
 

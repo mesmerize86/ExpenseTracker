@@ -1,0 +1,10 @@
+input[type="text"]{
+	border: none;
+	border-bottom: 1px solid #6fb6e7;
+	background-color: transparent;
+	border-radius: 0px;
+	@include box-shadow(none);
+}
+input[type="password"]{
+	@extend input[type="text"];
+}
