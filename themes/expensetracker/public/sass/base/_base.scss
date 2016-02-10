@@ -7,9 +7,18 @@
 
 html, body{
 	height: 100%;
-
 	@include gradient-vertical($gradient-light, $gradient-dark, 0%, 100%);
-
-	@include add-background($default-background); /* if gradient doesn't work */
+	@include default-background($default-background); /* if gradient doesn't work */
 }
 
+.pad-top{
+	padding-top: 10%;
+}
+
+
+@media only screen 
+  and (max-device-width: 414px){
+  	.pad-top{
+		padding-top: 160px;
+	}
+  }

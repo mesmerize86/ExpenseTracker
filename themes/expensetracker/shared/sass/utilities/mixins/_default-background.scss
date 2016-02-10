@@ -1,0 +1,9 @@
+@mixin default-background($color){
+	background-color: $color;
+	
+	@if($color == $default-background){
+		color: #FFFFFF;
+	}@else if($color == $color-cyan){
+		color: #FFFFFF;
+	}
+}

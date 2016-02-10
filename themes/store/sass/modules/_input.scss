@@ -1,0 +1,13 @@
+// =================================
+// Input
+// =================================
+
+.input{
+	&-textbox{
+		@extend .form-control;
+	}
+
+	&-password{
+		@extend .form-control;
+	}
+}
