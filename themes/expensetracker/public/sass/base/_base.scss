@@ -11,10 +11,43 @@ html, body{
 	@include default-background($default-background); /* if gradient doesn't work */
 }
 
+a{
+	color: $text-default;
+}
+
 .pad-top{
 	padding-top: 10%;
 }
 
+.text-muted{
+	color: $text-muted;
+}
+
+
+/* Override third party css */
+.pe-hover.pe-so-facebook:hover, .pe-hover.pe-so-twitter:hover, .pe-hover.pe-so-dribbble:hover{
+	color: $text-default !important;
+}
+
+.pe-2x{
+	font-size: 22px !important;
+}
+
+ul.pe-social li a{
+	border: 1px solid $text-muted;
+
+	height: 40px;
+	width: 40px;
+	padding-top: 7px;
+
+	@include border-radius(50%);
+
+	&:hover{
+		background-color: $text-muted;
+
+	}
+
+}
 
 @media only screen 
   and (max-device-width: 414px){

@@ -1,8 +1,5 @@
 // =================================
-// Label
+// Fonts
 // =================================
 
-label{
-	font-weight: normal;
-	@extend label;
-}
+@import '../../../shared/sass/fonts/fonts';
